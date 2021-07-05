@@ -11,7 +11,7 @@ import (
 func main() {
 	start := time.Now()
 	log.SetOutput(os.Stderr)
-	defer log.Println("Got response in ", time.Now().Sub(start)
+	defer log.Println("Got response in ", time.Now().Sub(start))
 
 	query := os.Args[1]
 	log.Printf("Query: \"%s\"", query)
