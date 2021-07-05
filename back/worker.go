@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 	"time"
 )
 
@@ -83,7 +84,11 @@ func SerializeSearchResp(items []ResponseItem, rerun bool) []byte {
 	var aw AlfredFeedback
 
 	for _, item := range items {
-		newItem := AlfredItem{item.Title, item.Subtitle}
+		newItem := AlfredItem{}
+		newItem.Type = "default"
+		newItem.Title = item.Title
+		newItem.Subtitle = item.Subtitle
+		newItem.Url = "notion://www.notion.so/" + strings.ReplaceAll(item.Id, "-", "")
 		aw.Items = append(aw.Items, newItem)
 	}
 
